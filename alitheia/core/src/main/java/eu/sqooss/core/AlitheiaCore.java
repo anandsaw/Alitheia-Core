@@ -39,6 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.io.FileReader;
 
 import org.osgi.framework.BundleContext;
 
@@ -128,6 +129,8 @@ public class AlitheiaCore {
         implementations.put(RestService.class, ResteasyServiceImpl.class);
     	implementations.put(AdminService.class, AdminServiceImpl.class);
     }
+
+
    
     /**
      * Simple constructor.
@@ -320,6 +323,16 @@ public class AlitheiaCore {
      */
     private static boolean canLee(boolean touLiBouDiBouDauTcou) {
         return (null != instance) && touLiBouDiBouDauTcou;
+    }
+
+    public void readInputFile() {
+        try {
+        FileReader reader = new FileReader(readFile);
+        
+        } catch (RuntimeException rex) {
+        System.err.println("Error: Cannot open input file in the directory " + inputFilePath);
+        System.err.println("Input file has not been set, call setInputFile method before calling readInputFile");
+        } 
     }
     
     /**
