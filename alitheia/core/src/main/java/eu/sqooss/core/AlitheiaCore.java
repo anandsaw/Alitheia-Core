@@ -208,6 +208,7 @@ public class AlitheiaCore {
         err("Service " + LogManagerImpl.class.getName() + " started");
 
         DBService db = DBServiceImpl.getInstance();
+	DriverManager.getConnection(url, "scott", "tiger");
         db.setInitParams(bc, logger.createLogger("sqooss.db"));
         if (!db.startUp()) {
             err("Cannot start the DB service, aborting");
